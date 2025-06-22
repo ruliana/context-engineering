@@ -1,64 +1,98 @@
 # Context Engineering
 
-A curated collection of composable context modules designed to rapidly equip AI agents with domain-specific knowledge and frameworks for performing complex tasks.
+A collection of structured knowledge modules designed to provide AI agents with domain-specific expertise for complex tasks.
 
-## Overview
+**Note:** "Context Engineering" is not an established term in the field. I propose it as a natural progression from prompt engineering - moving from crafting individual prompts to orchestrating comprehensive knowledge contexts. More thoughts on this progression can be found in "[From Prompt Engineering to Context Engineering](https://claude.ai/public/artifacts/b0816f4a-9d45-4227-ae18-91bb1b60fcc1)".
 
-Context engineering is a specialization of Retrieval-Augmented Generation (RAG) focused on crafting structured, composable context that can be mixed and matched to give AI agents precisely the knowledge they need for specific tasks.
+This repository contains self-contained knowledge modules that can be loaded into AI conversations to provide immediate domain expertise without requiring repeated explanations of foundational concepts.
 
-**Note:** "Context Engineering" is not yet a term in the field, but I believe it is the natural next step of prompt engineering (some thoughts about it on "[From Prompt Engineering to Context Engineering](https://claude.ai/public/artifacts/b0816f4a-9d45-4227-ae18-91bb1b60fcc1)" - the progression from prompt crafting to context orchestration.
+## Example Usage
 
-This repository provides self-contained context modules that can be referenced in AI conversations, loaded as initial context, or combined to build comprehensive knowledge bases for AI agents. While optimized for AI consumption, these documents also serve as excellent references for humans.
+```
+# Standard interaction requires background explanation
+You: "Help me set up Neovim with a package manager"
+AI: ... (uses the knowledge available in the internet at training time) ...
 
-**Note:** This is not a prompt library. These are knowledge modules designed to provide deep, actionable context about specific domains, tools, or methodologies.
+# With context module, AI has immediate domain knowledge
+You: "@neovim-lazy-context.md Set up Neovim with essential plugins for coding"
+AI: "I'll configure Lazy.nvim with LSP, Telescope, Treesitter, and Neo-tree..."
+```
 
-## Context Engineering Principles
+### Multi-Context Example
 
-Context varies from **generic** to **specific**:
+```
+# Combining multiple contexts for complex tasks
+You: "@blog-writing-context.md @non-interactive-claude-code-context.md 
+     Write a technical blog post about Claude Code's non-interactive features"
+AI: "I'll write a structured technical blog post covering Claude Code's non-interactive 
+     mode, with proper prerequisites, implementation examples, and validation steps..."
+```
 
-- **Generic contexts**: Universal knowledge applicable across domains (e.g., how to write a blog post, project management principles)
-- **Specific contexts**: Specialized knowledge for particular tools or domains (e.g., BigQuery Pipe Syntax, Racket Programming Language, in-house system architectures)
+These modules provide comprehensive domain knowledge rather than simple prompt templates. See the `examples/claude-code-noninteractive-blog/` folder for the complete blog post created using this two-context approach.
 
-Generic contexts help prime models with established best practices, while specific contexts fill knowledge gaps for new technologies or proprietary systems that lack training data.
+## Context as Subject, Action as Verb
 
-## Context Modules
+Context modules function as "subjects" that can be paired with any "verb" (action), similar to how REST APIs work with resources and HTTP methods. The context provides the domain knowledge, while your instruction specifies the action to perform.
 
-Context modules are self-contained knowledge documents optimized for AI consumption. They range from **generic** to **specific**:
+```
+# Same context, different actions
+You: "@neovim-lazy-context.md Set up Neovim with essential plugins for coding"
+AI: "I'll configure Lazy.nvim with LSP, Telescope, Treesitter, and Neo-tree..."
 
-- **Generic contexts**: Universal knowledge applicable across domains (e.g., blog writing, project management principles)
-- **Specific contexts**: Specialized knowledge for particular tools or domains (e.g., Claude Code workflows, database optimization, API design)
-- **Meta contexts**: Knowledge about creating and structuring other contexts (e.g., context creation methodology)
+You: "@neovim-lazy-context.md Debug why my Neovim plugins aren't loading"
+AI: "Let's check your lazy-lock.json file and plugin configuration..."
 
-Context modules are designed to be **composable** - you can combine multiple modules for complex, multi-domain tasks. For example, creating a technical blog post about Docker might use both "blog-writing-context" and "docker-context" modules.
+You: "@neovim-lazy-context.md Optimize my Neovim startup time"
+AI: "I'll analyze your plugin loading strategy and suggest lazy-loading improvements..."
+```
+
+Context modules contain foundational knowledge but do not include action-specific instructions like "create", "fix", or "evaluate". Instead, they provide the expertise that can be applied to any action within that domain.
+
+## Module Structure
+
+Each context module contains:
+
+- **Key Concepts**: Core principles and definitions
+- **Common Patterns**: Standard approaches and decision frameworks  
+- **Implementation Details**: Code examples, commands, and procedures
+- **Validation Methods**: Success criteria and error handling
+- **Authoritative References**: Links to official documentation
+
+Modules focus on essential knowledge structured for AI consumption, not step-by-step tutorials.
 
 ## Usage Patterns
 
-1. **Single Context**: Load one context module for focused, domain-specific tasks
-2. **Context Composition**: Combine multiple contexts for complex, multi-domain scenarios
-3. **Meta + Domain**: Use meta contexts to guide creation, then apply domain contexts
-4. **Iterative Refinement**: Start with generic contexts, then layer in specific domain knowledge
+Context modules provide foundational knowledge that supports multiple task types. For example, `neovim-lazy-context.md` enables:
+
+- **Creation**: "Create a Neovim configuration using Lazy package manager"
+- **Debugging**: "Help debug issues in my Neovim Lazy setup"
+- **Optimization**: "Optimize my existing Neovim configuration for performance"
+- **Evaluation**: "Review my Neovim setup and suggest improvements"
+
+The same knowledge base supports different actions without requiring separate context modules for each task type.
+
+## Available Modules
+
+### 📚 Ready to Use
+- `blog-writing-context.md` - Technical blog writing expertise
+- `claude-code-commands-context.md` - Claude Code custom commands and workflows  
+- `neovim-lazy-context.md` - Neovim with Lazy package manager
+- `neovim-markdown-editor-context.md` - Neovim as markdown editor
+- `non-interactive-claude-code-context.md` - Claude Code for scripting and automation
+
+### 🛠️ Meta Modules  
+- `context-creation.md` - How to build your own context modules
+
+### 💡 Examples
+- `claude-code-noninteractive-blog/` - Blog post created by combining multiple contexts
 
 ## Contributing
 
-When adding new context modules:
-- **Meta contexts**: Focus on teaching principles and methodologies
-- **Domain contexts**: Provide actionable, domain-specific knowledge
-- Ensure each document is fully self-contained
-- Test with AI agents to verify effectiveness
-- Design for composability with other modules
-
-## Module Index
-
-### 📚 Context Modules
-- `context-creation.md` - How to build effective context modules
-- `blog-writing-context.md` - Technical blog writing expertise
-- `neovim-lazy-context.md` - Neovim with Lazy package manager
-- `neovim-markdown-editor-context.md` - Neovim as markdown editor
-- `non-interactive-claude-code-context.md` - Claude Code usage patterns and workflows for non-interactive use (`claude -p`)
-- `claude-code-commands-context.md` - Claude Code custom commands creation and usage patterns
-
-### 💡 Examples
-- `claude-code-noninteractive-blog/` - Blog post created by combining `non-interactive-claude-code-context.md` and `blog-writing-context.md`
+New context modules should:
+- Be fully self-contained (no external dependencies)
+- Focus on one domain or tool
+- Include practical examples and code
+- Test with AI agents before submitting
 
 ## Repository Structure
 
