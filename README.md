@@ -28,7 +28,7 @@ AI: "I'll write a structured technical blog post covering Claude Code's non-inte
      mode, with proper prerequisites, implementation examples, and validation steps..."
 ```
 
-These modules provide comprehensive domain knowledge rather than simple prompt templates. See the `examples/claude-code-noninteractive-blog.md` folder for the complete blog post created using this two-context approach.
+These modules provide comprehensive domain knowledge rather than simple prompt templates. See the [claude-code-noninteractive-blog.md](examples/claude-code-noninteractive-blog/claude-code-noninteractive-blog.md) for the complete blog post created using this two-context approach.
 
 ## Context as Subject, Action as Verb
 
