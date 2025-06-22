@@ -21,13 +21,21 @@ Brief description of what this command does.
 
 ## Instructions
 
-1. **Step One**
-   - Specific action to take
-   - Validation criteria
+- Directive to follow
+- Another directive to follow
+- Practices to avoid
 
-2. **Step Two**
-   - Next action
-   - Expected outcome
+## Process
+
+1. Specific action to take
+   - Expected outcome or instruction to follow
+2. Next action
+
+## Validation
+
+- Confirm all specified directives were followed
+- Verify expected outcomes were achieved
+- Check that no unintended side effects occurred
 ```
 
 ### Parameterized Command with Arguments
@@ -38,14 +46,72 @@ Analyze and fix the specified GitHub issue systematically.
 
 Please analyze and fix the GitHub issue: $ARGUMENTS
 
+## Instructions
+
+- Be pragmatic and precise. Do not implement anything more than fix the issue
+- Use the TDD red-green cycle (one test, one implementation, one test, one implementation)
+
 ## Process
+
+Follow the instructions below sistematically.
+
 1. Use `gh issue view $ARGUMENTS` to get issue details
 2. Search relevant files using grep/find
-3. Implement changes following project conventions
-4. Write/update tests for the fix
-5. Run test suite and linting
-6. Create descriptive commit message
-7. Push changes and create pull request
+3. Search relevant PRs using `gh`
+4. Run test suite to make sure you can run it and all tests are passing
+4. Write a unit test that demonstrates the issue
+   - Do not proceed until you have a failing test
+5. Implement changes following project conventions
+6. Run test suite and linting
+7. Create descriptive commit message
+8. Push changes and create pull request
+
+## Validation
+
+1. Compare the original issue with the results. Check if everything was covered, no more, no less.
+2. Run all tests, check if there is no regressions
+```
+
+### Multi-Argument Command
+```markdown
+# Create Feature Branch
+
+Create a new feature branch with comprehensive setup.
+
+Feature details: $ARGUMENTS
+
+## Arguments
+
+Parse the arguments as: feature-type feature-name [base-branch]
+- Extract feature type from first word of $ARGUMENTS
+- Extract feature name from second word of $ARGUMENTS
+- Use third word as base branch if provided, otherwise use main
+
+## Instructions
+
+- Create branch following naming convention: `{feature-type}/{feature-name}`
+- Ensure clean development environment setup
+- Verify all dependencies and tests work correctly
+
+## Process
+
+1. **Branch Management**
+   - Ensure we're on the correct base branch
+   - Create branch: `{feature-type}/{feature-name}`
+   - Push branch to remote with upstream tracking
+
+2. **Setup Development Environment**
+   - Install/update dependencies if needed
+   - Run initial tests to ensure clean state
+   - Create basic file structure if needed
+
+## Validation
+
+- Confirm branch exists: `git branch -a | grep {feature-type}/{feature-name}`
+- Verify upstream tracking: `git branch -vv`
+- Check clean working directory: `git status`
+- Validate tests pass: run test suite
+- Ensure dependencies are current: check package manager status
 ```
 
 ### Multi-Step Workflow Command
@@ -53,6 +119,8 @@ Please analyze and fix the GitHub issue: $ARGUMENTS
 # Code Review Checklist
 
 Perform comprehensive code review following team standards.
+
+Team standards file: `a-file-with-team-standards.md`
 
 ## Review Criteria
 
@@ -75,6 +143,13 @@ Perform comprehensive code review following team standards.
    - Verify unit tests exist
    - Check integration test coverage
    - Validate edge case handling
+
+## Validation
+
+- Confirm all review criteria were addressed
+- Verify actionable feedback was provided for each issue
+- Check that security and performance concerns were identified
+- Ensure recommendations are specific and implementable
 ```
 
 ### File-Reference Command
@@ -92,6 +167,13 @@ Please analyze these configuration files:
 - Dependencies and version compatibility
 - Build and lint configuration
 - Security settings and best practices
+
+## Validation
+
+- Confirm all referenced files were analyzed
+- Verify compatibility issues were identified
+- Check that security recommendations are actionable
+- Ensure configuration suggestions follow best practices
 ```
 
 ### Bash-Integrated Command
@@ -108,6 +190,13 @@ Based on the system information above, help me:
 1. Verify all required dependencies are installed
 2. Set up the development environment
 3. Configure any missing tools or settings
+
+## Validation
+
+- Confirm system information was captured correctly
+- Verify all dependencies are compatible with current system
+- Check that setup instructions are system-specific
+- Ensure configuration changes were applied successfully
 ```
 
 ## Implementation Details
