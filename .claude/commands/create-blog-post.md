@@ -10,30 +10,25 @@ Create high-quality technical blog posts that provide practical value to develop
 
 **Full Arguments**: $ARGUMENTS
 
-Parse the arguments as: `[SUBJECT] [optional: file1 file2 ...]`
+Parse the arguments as: `[TOPIC] [optional: file1 file2 ...]`
 
-The first part should be the subject for the blog post
+The first part should be the main topic for the blog post.
+Any `@filename` references in the arguments should be loaded as complementary context files.
 
 ## Context
 
-Read contexts/blog-writing-context.md for precise instructions about how to write context files. Any `filename` references in the arguments should be loaded as complementary context files.
+Read @contexts/blog-writing-context.md for precise instructions about blog writing patterns and structure.
 
 ## Required Clarifying Questions
 
 Before creating the blog post, ask these essential questions:
 
 1. **Topic Scope**: What specific technical topic, technology, or problem should the blog post address? What are the boundaries of coverage?
-
 2. **Audience Level**: What is the target audience's experience level and technical background? Should the content be beginner-friendly, intermediate, or advanced?
-
 3. **Content Format**: What type of blog post format best serves the objective? (tutorial, deep-dive analysis, comparison guide, case study, best practices, troubleshooting guide)
-
 4. **Technical Depth**: What level of technical detail is required? Should it include code examples, architecture diagrams, configuration samples, or performance metrics?
-
 5. **Practical Context**: What specific problems will this blog post solve for readers? What practical outcomes should they achieve after reading?
-
 6. **Authority Sources**: Are there specific documentation, research papers, or authoritative sources that must be referenced? What sources should be avoided?
-
 7. **Output Requirements**: What is the expected length, structure, and format? Are there SEO considerations or publication platform requirements?
 
 ## Delivery Format
@@ -50,3 +45,18 @@ Present the final blog post as a complete markdown document with:
 - **Conclusion** that reinforces the main points and next steps
 
 Ensure the content is technically accurate, well-researched, and immediately applicable to real-world development scenarios.
+
+## Validation Steps
+
+1. **Content Structure Check**: Verify the blog post follows the framework structure from @contexts/blog-writing-context.md
+2. **Technical Accuracy**: Validate all code examples are syntactically correct and runnable
+3. **Link Verification**: Check that all external references and links are valid and accessible
+4. **Readability Assessment**: Ensure content is scannable with proper headings, bullet points, and formatting
+5. **Completeness Check**: Confirm all required sections are present and sufficiently detailed
+
+**Success Criteria**:
+- Markdown syntax is valid and renders correctly
+- All code examples execute without errors
+- External links return 200 status codes
+- Content follows the specified blog writing patterns
+- Reader can achieve stated objectives by following the content

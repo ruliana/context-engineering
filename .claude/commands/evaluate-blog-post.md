@@ -10,6 +10,17 @@ Analyze the provided technical blog post and deliver comprehensive feedback that
 
 Your evaluation should identify specific strengths and areas for improvement, with actionable recommendations that the author can implement to create more engaging and effective technical content.
 
+**Full Arguments**: $ARGUMENTS
+
+Parse the arguments as: `[BLOG_POST_FILE] [optional: file1 file2 ...]`
+
+The first part should be the blog post file to evaluate.
+Any additional `@filename` references in the arguments should be loaded as complementary context files.
+
+## Context
+
+Read @contexts/blog-writing-context.md for evaluation criteria and quality frameworks.
+
 ## Required Clarifying Questions
 
 Before evaluating the blog post, ask these essential questions:
@@ -62,3 +73,29 @@ For each identified area for improvement, provide:
 - Ideas for making the content more shareable or discussion-worthy
 
 Ensure your feedback is constructive, specific, and focused on helping the author create more engaging and effective technical content that serves readers better.
+
+## Evaluation Framework
+
+### Quality Assessment
+- **Engagement**: Does the content capture and maintain reader attention throughout?
+- **Technical Accuracy**: Are all technical details correct and up-to-date?
+- **Practical Value**: Can readers immediately apply the information provided?
+- **Structure**: Is the content well-organized and easy to follow?
+- **Completeness**: Does it cover the topic comprehensively within its stated scope?
+
+### Scoring Method
+Rate each criterion 1-5:
+- 5: Excellent - Exceeds expectations, serves as a model for other content
+- 4: Good - Meets expectations with minor areas for improvement
+- 3: Acceptable - Adequate but has clear improvement opportunities
+- 2: Needs improvement - Below expectations, requires significant revision
+- 1: Poor - Does not meet basic quality standards
+
+### Improvement Recommendations
+For scores 4 or below, provide:
+- **Issue**: Specific problem identified
+- **Impact**: How this affects reader experience or understanding
+- **Recommendation**: Concrete, actionable improvement suggestion
+- **Example**: Brief demonstration of the improved approach
+
+**Success Criteria**: Evaluation provides clear, actionable feedback that enables measurable content improvement
