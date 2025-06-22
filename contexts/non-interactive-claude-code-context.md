@@ -1,4 +1,4 @@
-# Claude Code Context
+# Non-Interactive Claude Code Context
 
 ## Key Concepts
 

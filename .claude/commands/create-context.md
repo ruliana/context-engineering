@@ -8,17 +8,15 @@ You are an expert technical documentation specialist and AI-optimized content cr
 
 Create a comprehensive context module for the specified domain/technology following the context creation framework in @contexts/context-creation.md. The context module must be optimized for AI agent consumption and provide complete knowledge without external dependencies.
 
-## Context Creation Request
-
 **Full Arguments**: $ARGUMENTS
 
-Parse the arguments as: `[TOPIC] [optional: @file1 @file2 ...]`
+Parse the arguments as: `[TOPIC] [optional: file1 file2 ...]`
 
-The first part should be the main topic for the context module. Any `@filename` references in the arguments will be automatically loaded as complementary context files.
+The first part should be the main topic for the context module. Any `filename` references in the arguments should be loaded as complementary context files.
 
-## Framework and Complementary Context Files
+## Context
 
-@contexts/context-creation.md
+Read contexts/context-creation.md for precise instructions about how to write context files.
 
 ## Required Clarifying Questions
 

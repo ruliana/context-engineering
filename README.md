@@ -6,7 +6,7 @@ A curated collection of composable context modules designed to rapidly equip AI 
 
 Context engineering is a specialization of Retrieval-Augmented Generation (RAG) focused on crafting structured, composable context that can be mixed and matched to give AI agents precisely the knowledge they need for specific tasks.
 
-**Note:** "Context Engineering" is not a unified term in the field, but represents the natural evolution of prompt engineering as described in "[From Prompt Engineering to Context Engineering](https://claude.ai/public/artifacts/b0816f4a-9d45-4227-ae18-91bb1b60fcc1)" - the progression from simple prompt crafting to sophisticated context orchestration.
+**Note:** "Context Engineering" is not yet a term in the field, but I believe it is the natural next step of prompt engineering (some thoughts about it on "[From Prompt Engineering to Context Engineering](https://claude.ai/public/artifacts/b0816f4a-9d45-4227-ae18-91bb1b60fcc1)" - the progression from prompt crafting to context orchestration.
 
 This repository provides self-contained context modules that can be referenced in AI conversations, loaded as initial context, or combined to build comprehensive knowledge bases for AI agents. While optimized for AI consumption, these documents also serve as excellent references for humans.
 
@@ -31,10 +31,6 @@ Context modules are self-contained knowledge documents optimized for AI consumpt
 
 Context modules are designed to be **composable** - you can combine multiple modules for complex, multi-domain tasks. For example, creating a technical blog post about Docker might use both "blog-writing-context" and "docker-context" modules.
 
-## Examples
-
-The examples folder contains practical demonstrations of context engineering in action. The blog post example shows how two context modules (`claude-code-context` and `blog-writing-context`) were composed to create technical content.
-
 ## Usage Patterns
 
 1. **Single Context**: Load one context module for focused, domain-specific tasks
@@ -55,13 +51,14 @@ When adding new context modules:
 
 ### 📚 Context Modules
 - `context-creation.md` - How to build effective context modules
-- `claude-code-context.md` - Claude Code usage patterns and workflows
 - `blog-writing-context.md` - Technical blog writing expertise
 - `neovim-lazy-context.md` - Neovim with Lazy package manager
 - `neovim-markdown-editor-context.md` - Neovim as markdown editor
+- `non-interactive-claude-code-context.md` - Claude Code usage patterns and workflows for non-interactive use (`claude -p`)
+- `claude-code-commands-context.md` - Claude Code custom commands creation and usage patterns
 
 ### 💡 Examples
-- `claude-code-noninteractive-blog/` - Context composition demonstration
+- `claude-code-noninteractive-blog/` - Blog post created by combining `non-interactive-claude-code-context.md` and `blog-writing-context.md`
 
 ## Repository Structure
 

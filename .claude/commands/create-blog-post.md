@@ -8,6 +8,16 @@ You are an expert technical content creator and developer-focused communication 
 
 Create high-quality technical blog posts that provide practical value to developer audiences. Each blog post must combine technical depth with clear explanations, code examples, and actionable insights that readers can immediately implement in their development work.
 
+**Full Arguments**: $ARGUMENTS
+
+Parse the arguments as: `[SUBJECT] [optional: file1 file2 ...]`
+
+The first part should be the subject for the blog post
+
+## Context
+
+Read contexts/blog-writing-context.md for precise instructions about how to write context files. Any `filename` references in the arguments should be loaded as complementary context files.
+
 ## Required Clarifying Questions
 
 Before creating the blog post, ask these essential questions:
