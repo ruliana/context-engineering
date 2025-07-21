@@ -205,6 +205,35 @@ return {
 - **Error checking**: `:messages` displays recent error messages
 - **Plugin loading**: `:Lazy profile` shows startup performance
 
+### Headless Mode Operations
+```bash
+# Install all plugins without UI interaction
+nvim --headless -c "Lazy! sync" -c "qa"
+
+# Check plugin installation status
+nvim --headless -c "Lazy! status" -c "qa"
+
+# Update all plugins
+nvim --headless -c "Lazy! update" -c "qa"
+
+# Clean unused plugins
+nvim --headless -c "Lazy! clean" -c "qa"
+
+# Check health status
+nvim --headless -c "checkhealth lazy" -c "qa"
+
+# Profile startup performance
+nvim --headless -c "Lazy! profile" -c "qa"
+
+# Install specific plugin
+nvim --headless -c "Lazy! install telescope.nvim" -c "qa"
+
+# Check if plugin is loaded
+nvim --headless -c "lua print('Loaded:', require('lazy').plugins()['telescope.nvim'] ~= nil)" -c "qa"
+```
+**When to use**: CI/CD pipelines, automated setup scripts, configuration validation
+**Expected output**: Command output to stdout/stderr without interactive UI
+
 ### Common Error Patterns
 ```
 E5113: Error while calling lua chunk
@@ -223,6 +252,64 @@ module 'lazy' not found
 ```
 **Cause**: Bootstrap code not executed or failed
 **Fix**: Ensure bootstrap code runs before require("lazy")
+
+## Headless Automation Patterns
+
+### Automated Setup Scripts
+```bash
+#!/bin/bash
+# Complete Neovim setup automation
+
+echo "Installing Neovim plugins..."
+nvim --headless -c "Lazy! sync" -c "qa"
+
+echo "Running health checks..."
+nvim --headless -c "checkhealth" -c "qa" > health-report.txt
+
+echo "Verifying plugin functionality..."
+nvim --headless -c "lua for name, plugin in pairs(require('lazy').plugins()) do print(name, plugin.loaded and 'loaded' or 'not loaded') end" -c "qa"
+```
+
+### CI/CD Integration
+```yaml
+# GitHub Actions example
+- name: Setup Neovim configuration
+  run: |
+    nvim --headless -c "Lazy! sync" -c "qa"
+    nvim --headless -c "checkhealth" -c "qa" || exit 1
+    
+- name: Test configuration
+  run: |
+    # Test LSP functionality
+    nvim --headless test.py -c "LspInfo" -c "qa"
+    
+    # Validate plugin loading
+    nvim --headless -c "lua assert(require('lazy').plugins()['nvim-lspconfig'], 'LSP not loaded')" -c "qa"
+```
+
+### Configuration Validation
+```bash
+# Validate specific plugin configurations
+nvim --headless -c "lua local ok, err = pcall(require, 'telescope'); print(ok and 'OK' or 'ERROR: ' .. err)" -c "qa"
+
+# Check keybinding conflicts
+nvim --headless -c "lua vim.keymap.set('n', '<leader>f', function() print('test') end); print('Keybinding test passed')" -c "qa"
+
+# Verify LSP server availability
+nvim --headless -c "lua local servers = require('lspconfig').util.available_servers(); for _, server in ipairs(servers) do print(server) end" -c "qa"
+```
+
+### Debugging Headless Operations
+```bash
+# Capture detailed output
+nvim --headless -V9nvim.log -c "Lazy! sync" -c "qa" 2>&1 | tee setup.log
+
+# Check for errors in batch operations
+nvim --headless -c "set verbose=9 | Lazy! sync | messages" -c "qa"
+
+# Test specific functionality
+nvim --headless -c "runtime! plugin/**/*.vim | echo 'All plugins loaded'" -c "qa"
+```
 
 ## Troubleshooting
 

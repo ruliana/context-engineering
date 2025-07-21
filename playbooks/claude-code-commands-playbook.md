@@ -5,11 +5,11 @@
 - **Custom Command**: Specialized task definition in `.claude/commands/` that provides structured instructions for Claude to execute specific workflows
 - **Command Anatomy**: Goal definition (what) + Context integration (how) + Validation/Evaluation (verification)
 - **Argument Parsing**: Pattern `[TOPIC] [optional: file1 file2 ...]` where first part is main subject, additional parts are context files
-- **Context Integration**: Commands rely on external context files (e.g., `@contexts/context-creation.md`) for detailed "how" instructions
+- **Context Integration**: Commands rely on external playbook files (e.g., `@playbooks/playbook-creation.md`) for detailed "how" instructions
 - **Validation vs Evaluation**: Objective verification (tests, compilation, syntax) vs subjective assessment (quality, engagement, effectiveness)
 - **Clarifying Questions**: Required pre-execution questions to refine scope, audience, technical depth, and requirements
 - **Delivery Format**: Structured output specification with clear formatting and validation requirements
-- **Self-Assessment**: Claude's ability to verify its own work using predefined criteria from context files
+- **Self-Assessment**: Claude's ability to verify its own work using predefined criteria from playbook files
 - **Command Composition**: Ability to chain or combine commands for complex workflows
 
 ## Common Patterns
@@ -149,14 +149,14 @@ Present the final [output] with:
 1. **Reference Pattern**
 ```markdown
 ## Context
-Read @contexts/[context-name].md for [specific instructions].
+Read @playbooks/[playbook-name].md for [specific instructions].
 ```
 
 2. **Multiple Context Files**
 ```markdown
 ## Context
-- @contexts/[primary-context].md - [primary instructions]
-- @contexts/[secondary-context].md - [supplementary guidance]
+- @playbooks/[primary-playbook].md - [primary instructions]
+- @playbooks/[secondary-playbook].md - [supplementary guidance]
 ```
 
 3. **Argument-Based Context Loading**

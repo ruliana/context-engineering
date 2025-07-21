@@ -1,10 +1,10 @@
-# Context Creation Framework
+# Playbook Creation Framework
 
-Framework for developing authoritative, AI-agent-optimized context modules that provide deep domain knowledge and composable expertise.
+Framework for developing authoritative, AI-agent-optimized playbooks that provide deep domain knowledge and composable expertise.
 
 ## Core Objective
 
-Create self-contained context modules that AI agents can consume to gain domain expertise. Context modules are designed to be composable - they can be combined for complex, multi-domain tasks. Focus: actionable knowledge over theoretical concepts.
+Create self-contained playbooks that AI agents can consume to gain domain expertise. Playbooks are designed to be composable - they can be combined for complex, multi-domain tasks. Focus: actionable knowledge over theoretical concepts.
 
 ## Authority Identification
 
@@ -31,7 +31,7 @@ Create self-contained context modules that AI agents can consume to gain domain 
 
 ### Required Sections
 ```markdown
-# [Topic] Context
+# [Topic] Playbook
 
 ## Key Concepts
 [Essential domain knowledge - definitions, core principles]
@@ -62,7 +62,7 @@ Create self-contained context modules that AI agents can consume to gain domain 
 - Highlight variations and when to use each
 - Include both success and failure examples
 
-**Self-Contained Context**:
+**Self-Contained Playbook**:
 - Define all domain terms upfront
 - No references to external tutorials
 - Complete examples that work independently
@@ -194,15 +194,15 @@ server {
 - Include error scenarios
 
 ### 4. Validate with AI Agent
-- Load context module in clean conversation
+- Load playbook in clean conversation
 - Ask agent to perform related tasks
 - Verify agent can act without additional context
 - Refine based on AI comprehension gaps
 
-## Context Module Template
+## Playbook Template
 
 ```markdown
-# [Technology/Tool] Context
+# [Technology/Tool] Playbook
 
 ## Key Concepts
 - [Term]: [Definition]
@@ -265,6 +265,6 @@ server {
 
 ## Validation Test
 
-**Prompt**: "Using only the information in this context module, perform [specific task related to the domain]"
+**Prompt**: "Using only the information in this playbook, perform [specific task related to the domain]"
 
 **Success criteria**: AI agent completes task without asking for additional information or external resources.
