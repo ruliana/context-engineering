@@ -17,7 +17,7 @@ Any additional `@filename` references in the arguments should be loaded as compl
 
 ## Context
 
-Read @contexts/blog-writing-context.md for optimization patterns and engagement frameworks.
+Read @playbooks/blog-writing-playbook.md for optimization patterns and engagement frameworks.
 
 ## Required Clarifying Questions
 

@@ -17,7 +17,7 @@ Any `@filename` references in the arguments should be loaded as complementary co
 
 ## Context
 
-Read @contexts/blog-writing-context.md for precise instructions about blog writing patterns and structure.
+Read @playbooks/blog-writing-playbook.md for precise instructions about blog writing patterns and structure.
 
 ## Required Clarifying Questions
 
@@ -48,7 +48,7 @@ Ensure the content is technically accurate, well-researched, and immediately app
 
 ## Validation Steps
 
-1. **Content Structure Check**: Verify the blog post follows the framework structure from @contexts/blog-writing-context.md
+1. **Content Structure Check**: Verify the blog post follows the framework structure from @playbooks/blog-writing-playbook.md
 2. **Technical Accuracy**: Validate all code examples are syntactically correct and runnable
 3. **Link Verification**: Check that all external references and links are valid and accessible
 4. **Readability Assessment**: Ensure content is scannable with proper headings, bullet points, and formatting

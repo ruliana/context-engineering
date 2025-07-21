@@ -19,7 +19,7 @@ Any additional `@filename` references in the arguments should be loaded as compl
 
 ## Context
 
-Read @contexts/blog-writing-context.md for evaluation criteria and quality frameworks.
+Read @playbooks/blog-writing-playbook.md for evaluation criteria and quality frameworks.
 
 ## Required Clarifying Questions
 
