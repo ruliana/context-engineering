@@ -50,6 +50,12 @@ You: "@blog-writing-playbook.md @non-interactive-claude-code-playbook.md
      Write a technical blog post about Claude Code's non-interactive features"
 AI: "I'll write a structured technical blog post covering Claude Code's non-interactive 
      mode, with proper prerequisites, implementation examples, and validation steps..."
+
+# Development environment task combining containerization with language setup
+You: "@guile-scheme-setup-playbook.md @podman-development-environments-playbook.md
+     Create an isolated Guile Scheme development environment using Podman"
+AI: "I'll create a Podman container with Guile Scheme, configure the development tools,
+     and set up volume mounts for your source code with proper isolation..."
 ```
 
 This composability enables sophisticated workflows by combining domain expertise from multiple areas. See [examples/claude-code-noninteractive-blog/](examples/claude-code-noninteractive-blog/) for a complete blog post created using this multi-playbook approach.
