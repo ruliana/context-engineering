@@ -59,6 +59,8 @@ Playbooks are designed to be composable - multiple playbooks can be combined for
 - **Self-Contained**: Complete domain knowledge without external dependencies
 - **Actionable**: Executable commands and code that work independently
 - **Composable**: Designed to work independently or combined with other playbooks
+- **Professional**: All examples must be at a senior software engineer level, with clear, professional implementation details
+- **Scalable**: Designed to scale, including scalability and performance considerations, when applicable
 
 ## License
 
