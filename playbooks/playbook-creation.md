@@ -4,12 +4,12 @@ Framework for developing authoritative, AI-agent-optimized playbooks that provid
 
 ## Core Objective
 
-Create self-contained playbooks that AI agents can consume to gain domain expertise. Playbooks are designed to be composable - they can be combined for complex, multi-domain tasks. Focus: actionable knowledge over theoretical concepts a for Senior Software Engineer usage.
+Create self-contained playbooks that AI agents can consume to gain domain expertise. Playbooks are designed to be composable - they can be combined for complex, multi-domain tasks. Focus: actionable knowledge over theoretical concepts for Senior Software Engineer's usage.
 
 ## Authority Identification
 
 ### Source Priority Order
-1. **Official Documentation**: postgres.org, python.org, anthropic.com, openai.com 
+1. **Official Documentation**: postgres.org, python.org, anthropic.com, openai.com
 2. **Primary Sources**: Original research, RFCs, specifications
 3. **Expert Publications**: Industry leaders, .gov/.edu sources
 4. **Peer-Reviewed**: Academic papers with citations
