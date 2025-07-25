@@ -4,7 +4,7 @@ Framework for developing authoritative, AI-agent-optimized playbooks that provid
 
 ## Core Objective
 
-Create self-contained playbooks that AI agents can consume to gain domain expertise. Playbooks are designed to be composable - they can be combined for complex, multi-domain tasks. Focus: actionable knowledge over theoretical concepts.
+Create self-contained playbooks that AI agents can consume to gain domain expertise. Playbooks are designed to be composable - they can be combined for complex, multi-domain tasks. Focus: actionable knowledge over theoretical concepts for Senior Software Engineer's usage.
 
 ## Authority Identification
 
@@ -19,7 +19,9 @@ Create self-contained playbooks that AI agents can consume to gain domain expert
 - **AI/ML**: anthropic.com → openai.com → arxiv.org → research institutions
 - **Cloud**: aws.amazon.com → cloud.google.com → azure.microsoft.com
 - **Databases**: Official project sites → documentation → community wikis
-- **Languages**: Official language sites → standard libraries → core team blogs
+- **Languages**: Official language sites → standard libraries → core team blogs.E.g. python.org, ruby-lang.org, golang.org, learn.microsoft.com/en-us/dotnet/csharp
+- **SDKs/APIs**: Official API docs → SDK repositories → community examples. E.g. docs.aws.amazon.com, learn.microsoft.com/en-us/azure/developer, cloud.google.com/docs
+- **Frameworks**: Official framework sites → core team blogs → community examples. E.g. flask.palletsprojects.com, react.dev, tc39.es/ecma262, nuxt.com, vuejs.org
 
 ### Quick Validation
 - Check publication date (prefer recent)
@@ -40,10 +42,16 @@ Create self-contained playbooks that AI agents can consume to gain domain expert
 [Typical approaches, standard configurations, decision trees]
 
 ## Implementation Details
-[Code examples, commands, specific procedures]
+[Professional level code examples, commands, specific procedures]
 
 ## Validation Methods
 [How to verify success, common error patterns]
+
+## Anti-patterns to avoid
+[Common mistakes, pitfalls, and how to avoid them]
+
+## Debugging and Troubleshooting
+[Common issues, error messages, and solutions. Running a debugger]
 
 ## Authoritative References
 [Official sources only - no tutorials or blogs]
@@ -186,6 +194,7 @@ server {
 - Include exact syntax/commands
 - Show configuration examples
 - Note version-specific differences
+- Use most common framework if applicable. List alternatives if they are relevant.
 
 ### 3. Test All Examples
 - Verify every code snippet runs
@@ -195,7 +204,7 @@ server {
 
 ### 4. Validate with AI Agent
 - Load playbook in clean conversation
-- Ask agent to perform related tasks
+- Ask agent to perform related tasks under a senior software engineer role
 - Verify agent can act without additional context
 - Refine based on AI comprehension gaps
 
