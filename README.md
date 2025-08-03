@@ -58,7 +58,10 @@ AI: "I'll create a Podman container with Guile Scheme, configure the development
      and set up volume mounts for your source code with proper isolation..."
 ```
 
-This composability enables sophisticated workflows by combining domain expertise from multiple areas. See [examples/claude-code-noninteractive-blog/](examples/claude-code-noninteractive-blog/) for a complete blog post created using this multi-playbook approach.
+This composability enables sophisticated workflows by combining domain expertise from multiple areas. Examples include:
+
+- **[claude-code-noninteractive-blog/](examples/claude-code-noninteractive-blog/)** - Technical blog post using blog writing + Claude Code expertise
+- **[marimo-altair-interactive-dashboards/](examples/marimo-altair-interactive-dashboards/)** - Interactive data visualization tutorial combining Marimo notebooks + Altair charts + blog writing guidance. This example also demonstrates iterative prose refinement where a follow-up prompt transformed dry technical content into more engaging writing (though the result became overly exuberant, showing the need for balanced tone)
 
 ## Systematic Framework
 
@@ -79,19 +82,31 @@ Every playbook follows a consistent structure optimized for AI consumption:
 
 ## Available Playbooks
 
-### 📚 Ready to Use
-- **blog-writing-playbook.md** - Technical blog writing expertise with structured approaches
-- **claude-code-commands-playbook.md** - Claude Code custom commands and automation workflows  
+### 📊 Data Analysis & Visualization
+- **altair-interactive-charts-playbook.md** - Declarative interactive visualization with Vega-Lite grammar
+- **bigquery-pipe-syntax-playbook.md** - BigQuery pipe syntax for readable SQL queries
+- **duckdb-analytics-playbook.md** - High-performance analytics with DuckDB for data processing
+- **marimo-notebooks-playbook.md** - Reactive notebook development with automatic dependency tracking
+
+### 🔧 Development Tools & Environments
+- **claude-code-commands-playbook.md** - Claude Code custom commands and automation workflows
+- **guile-scheme-setup-playbook.md** - GNU Guile Scheme development environment configuration
 - **neovim-lazy-playbook.md** - Neovim configuration with Lazy package manager
 - **neovim-markdown-editor-playbook.md** - Optimizing Neovim as a markdown editor
 - **neovim-python-development-playbook.md** - Python development environment in Neovim
 - **non-interactive-claude-code-playbook.md** - Claude Code for scripting and automation
+- **podman-development-environments-playbook.md** - Containerized development with Podman
+- **python-uv-development-playbook.md** - Modern Python package management with uv
+
+### 📝 Content Creation & Documentation
+- **blog-writing-playbook.md** - Technical blog writing expertise with structured approaches
 
 ### 🛠️ Meta Playbooks  
 - **playbook-creation.md** - Complete framework for building authoritative playbooks
 
 ### 💡 Examples
 - **examples/claude-code-noninteractive-blog/** - Blog post demonstrating multi-playbook composition
+- **examples/marimo-altair-interactive-dashboards/** - Interactive data visualization tutorial using multiple playbooks, with documented prose evolution from dry to overly exuberant
 
 ## Building Your Own Playbooks
 
