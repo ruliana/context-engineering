@@ -57,13 +57,23 @@ import marimo as mo
 # Define widgets - cannot access .value in same cell
 user_name = mo.ui.text_input("Enter your name", placeholder="Your name here")
 age_slider = mo.ui.slider(0, 100, value=25, label="Age")
-category_select = mo.ui.dropdown(
-    options=["A", "B", "C"], 
-    label="Category"
+
+# Dropdown with list options (simple labels)
+category_list = mo.ui.dropdown(
+    options=["Premium", "Standard", "Basic"], 
+    value="Standard",  # Default to "Standard" option
+    label="Membership Type"
+)
+
+# Dropdown with dictionary options (key = label, value = actual value)
+priority_dict = mo.ui.dropdown(
+    options={"High Priority": 1, "Medium Priority": 2, "Low Priority": 3},
+    value="Medium Priority",  # IMPORTANT: value specifies the KEY (label), not the dict value
+    label="Task Priority"
 )
 
 # Display widgets
-mo.vstack([user_name, age_slider, category_select])
+mo.vstack([user_name, age_slider, category_list, priority_dict])
 ```
 
 ### Widget Value Usage (Cell 2)
@@ -71,13 +81,21 @@ mo.vstack([user_name, age_slider, category_select])
 # Access widget values in separate cell
 _name_value = user_name.value
 _age_value = age_slider.value
-_category_value = category_select.value
+
+# List dropdown: .value returns the selected string
+_category_value = category_list.value  # Returns: "Premium", "Standard", or "Basic"
+
+# Dictionary dropdown: .value returns the dictionary VALUE, not the key
+_priority_value = priority_dict.value  # Returns: 1, 2, or 3 (the numeric values)
+_priority_label = priority_dict.selected_key  # Returns: "High Priority", "Medium Priority", etc.
 
 # Use private variables for processing
 _processed_input = {
     "name": _name_value.upper() if _name_value else "Anonymous",
     "age_group": "adult" if _age_value >= 18 else "minor",
-    "category": _category_value
+    "membership_type": _category_value,
+    "priority_score": _priority_value,  # Numeric value for calculations
+    "priority_display": _priority_label  # Human-readable label for display
 }
 
 # Expose only what's needed globally
@@ -195,6 +213,142 @@ _region_filtered = _amount_filtered[
 
 # Global result for other cells
 filtered_sales = _region_filtered
+```
+
+### Dropdown Widget Patterns
+
+#### List-Based Dropdown (Simple Options)
+```python
+# Cell 1: Simple string options
+status_dropdown = mo.ui.dropdown(
+    options=["Draft", "Published", "Archived"],
+    value="Draft",  # Default selection
+    label="Post Status"
+)
+
+color_dropdown = mo.ui.dropdown(
+    options=["red", "green", "blue", "yellow"],
+    label="Theme Color",
+    searchable=True  # Enable search for long lists
+)
+
+mo.hstack([status_dropdown, color_dropdown])
+```
+
+```python
+# Cell 2: Access list dropdown values
+_status = status_dropdown.value  # Returns: "Draft", "Published", or "Archived"
+_color = color_dropdown.value   # Returns: "red", "green", "blue", or "yellow"
+
+# Both .value and .selected_key return the same thing for list dropdowns
+_status_key = status_dropdown.selected_key  # Same as .value for lists
+```
+
+#### Dictionary-Based Dropdown (Key-Value Mapping)
+```python
+# Cell 3: Dictionary options - IMPORTANT: keys become labels, values are the data
+plan_dropdown = mo.ui.dropdown(
+    options={
+        "Free Plan": {"price": 0, "features": 5},
+        "Pro Plan": {"price": 29, "features": 50}, 
+        "Enterprise": {"price": 99, "features": 500}
+    },
+    value="Pro Plan",  # CRITICAL: Use the KEY (label), not the dictionary value
+    label="Subscription Plan"
+)
+
+# Numeric mapping example
+difficulty_dropdown = mo.ui.dropdown(
+    options={
+        "Beginner": 1,
+        "Intermediate": 2, 
+        "Advanced": 3,
+        "Expert": 4
+    },
+    value="Intermediate",  # Again, use KEY not number
+    label="Difficulty Level"
+)
+
+mo.vstack([plan_dropdown, difficulty_dropdown])
+```
+
+```python
+# Cell 4: Dictionary dropdown value access
+# .value returns the dictionary VALUE (the mapped data)
+_selected_plan = plan_dropdown.value        # Returns: {"price": 29, "features": 50}
+_difficulty_level = difficulty_dropdown.value  # Returns: 2
+
+# .selected_key returns the KEY (the display label)  
+_plan_name = plan_dropdown.selected_key     # Returns: "Pro Plan"
+_difficulty_name = difficulty_dropdown.selected_key  # Returns: "Intermediate"
+
+# Common pattern: use both for different purposes
+_subscription_info = {
+    "display_name": _plan_name,           # Human-readable label
+    "plan_details": _selected_plan,       # Actual data for processing
+    "difficulty_display": _difficulty_name,  # For UI display
+    "difficulty_score": _difficulty_level   # For calculations
+}
+
+subscription_config = _subscription_info
+```
+
+#### Dynamic Dropdown from Data
+```python
+# Cell 5: Create dropdown from DataFrame or data
+_available_categories = clean_sales_data['category'].unique().tolist()
+_category_counts = clean_sales_data['category'].value_counts().to_dict()
+
+# Dictionary with counts for display
+category_with_counts = mo.ui.dropdown(
+    options={f"{cat} ({_category_counts[cat]} items)": cat for cat in _available_categories},
+    label="Category (with counts)",
+    searchable=True
+)
+
+# Simple list from data
+region_simple = mo.ui.dropdown(
+    options=clean_sales_data['region'].unique().tolist(),
+    label="Region Filter"
+)
+
+mo.vstack([category_with_counts, region_simple])
+```
+
+```python
+# Cell 6: Use dynamic dropdown values
+_selected_category = category_with_counts.value  # Returns actual category name (no count)
+_selected_region = region_simple.value           # Returns region name
+
+# Filter data based on selections
+_filtered_by_category = clean_sales_data[
+    clean_sales_data['category'] == _selected_category
+] if _selected_category else clean_sales_data
+
+_final_filtered = _filtered_by_category[
+    _filtered_by_category['region'] == _selected_region  
+] if _selected_region else _filtered_by_category
+
+dynamically_filtered_data = _final_filtered
+```
+
+#### Multi-Selection and Advanced Options
+```python
+# Cell 7: Multiple selections and advanced features
+multi_tags = mo.ui.multiselect(
+    options=["urgent", "bug", "feature", "documentation"],
+    label="Tags (Multiple)"
+)
+
+searchable_users = mo.ui.dropdown(
+    options={f"{name} ({email})": {"name": name, "email": email} 
+             for name, email in [("Alice", "alice@co.com"), ("Bob", "bob@co.com")]},
+    label="Assign to User",
+    searchable=True,
+    allow_select_none=True  # Allow deselecting
+)
+
+mo.vstack([multi_tags, searchable_users])
 ```
 
 ### Reactive Execution Control with mo.stop
@@ -455,6 +609,65 @@ data = _original_data.copy()
 # Cell 2 - DO THIS
 _extended_data = data + [4]
 updated_data = _extended_data
+```
+
+### ❌ Dropdown Dictionary Value Parameter Confusion
+```python
+# DON'T DO THIS - using dictionary value instead of key
+options_dict = {"High": 1, "Medium": 2, "Low": 3}
+priority = mo.ui.dropdown(
+    options=options_dict,
+    value=2,  # WRONG: 2 is a dictionary VALUE, not a key
+    label="Priority"
+)
+```
+
+### ✅ Use Dictionary Keys (Labels) for Value Parameter
+```python
+# DO THIS - use dictionary key (the label) for value parameter
+options_dict = {"High": 1, "Medium": 2, "Low": 3}
+priority = mo.ui.dropdown(
+    options=options_dict,
+    value="Medium",  # CORRECT: "Medium" is a key/label in the dictionary
+    label="Priority"
+)
+
+# Access the actual mapped value in separate cell
+_priority_score = priority.value  # Returns: 2 (the mapped value)
+_priority_label = priority.selected_key  # Returns: "Medium" (the key/label)
+```
+
+### ❌ Misunderstanding Dictionary Dropdown Value Access
+```python
+# Dropdown with dictionary options
+category_dropdown = mo.ui.dropdown(
+    options={"Category A": "cat_a", "Category B": "cat_b"},
+    value="Category A"
+)
+
+# DON'T DO THIS - expecting .value to return the key
+if category_dropdown.value == "Category A":  # WRONG: .value returns "cat_a", not "Category A"
+    process_category_a()
+```
+
+### ✅ Use Correct Properties for Dictionary Dropdowns  
+```python
+# DO THIS - understand what each property returns
+category_dropdown = mo.ui.dropdown(
+    options={"Category A": "cat_a", "Category B": "cat_b"},
+    value="Category A"
+)
+
+# In separate cell:
+_selected_value = category_dropdown.value        # Returns: "cat_a" (dictionary value)
+_selected_label = category_dropdown.selected_key  # Returns: "Category A" (dictionary key)
+
+# Use the appropriate property for your logic
+if _selected_label == "Category A":    # Compare with selected_key for labels
+    process_category_a()
+
+if _selected_value == "cat_a":         # Compare with value for mapped data
+    handle_category_a_data()
 ```
 
 ## Debugging and Troubleshooting
